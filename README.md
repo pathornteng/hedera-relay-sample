@@ -1,6 +1,6 @@
 # Hedera-relay-sample
 
-This repositorhy contains a set of sample code that uses various type of libraries such as hashgraph sdk, web3, ethersjs, truffle, etc to interact with JSON RPC relay server of Hedera Network.
+This repository contains a set of sample code that uses various types of libraries such as hashgraph sdk, web3, ethersjs, truffle, etc to interact with JSON RPC relay server of Hedera Network.
 
 ## Setup & Install
 
@@ -18,12 +18,12 @@ To run the sample code, there are a few environment variables that need to be co
 OPERATOR_KEY < the private key of an account on Hedera TestNet
 OPERATOR_ID < The account id on Hedera TestNet
 
-ETH_PRIVATE_KEY < the private key (ECDSA) of an account on TestNet (this account needs to have alias)
+ETH_PRIVATE_KEY < the private key (ECDSA) of an account on TestNet (this account must have an alias)
 CONTRACT_ADDRESS < EVM address of a smart contract
 JSON_RPC_RELAY_URL < JSON RPC relay url
 ```
 
-## Create an ECDSA account with alias
+## Create an ECDSA account with an alias
 
 Hedera JSON RPC relay requires an ECDSA account with an alias. This type of account must be created through Hedera SDK at the moment. To create an account, run the following command
 
@@ -49,7 +49,7 @@ truffle migrate
 
 ## Interact with JSON RPC relay
 
-Two popular libraies that can be used to interact with a smart contract are web3js and ethersjs. This repo contains code demonstrating how to use these libraries to interact with smart contract.
+Two popular libaries that can be used to interact with a smart contract are web3js and ethersjs. This repo contains code demonstrating how to use these libraries to interact with smart contracts.
 
 ```bash
 node web3.js

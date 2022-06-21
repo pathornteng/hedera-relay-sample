@@ -49,7 +49,7 @@ truffle migrate
 
 ## Interact with JSON RPC relay
 
-Two popular libraies that can be used to interact with a smart contract are web3js and ethersjs. This repo contains code demonstrating how to use these libraries to interact with smart contract. The
+Two popular libraies that can be used to interact with a smart contract are web3js and ethersjs. This repo contains code demonstrating how to use these libraries to interact with smart contract.
 
 ```bash
 node web3.js

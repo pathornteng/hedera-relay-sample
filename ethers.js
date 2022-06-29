@@ -12,6 +12,20 @@ const main = async () => {
   console.log("Address", signer.address);
   const balance = await provider.getBalance(signer.address);
   console.log("Account balance", ethers.utils.formatEther(balance), "Hbar");
+
+  const factory = new ethers.ContractFactory(
+    MyContract.abi,
+    MyContract.bytecode,
+    signer
+  );
+  const options = {
+    gasLimit: 4000000,
+    gasPrice: ethers.utils.parseUnits("1300", "gwei"),
+  };
+  const contractFactory = await factory.deploy(options);
+  const deployed = await contractFactory.deployed();
+  console.log(`Deployment successful! Contract Address: ${deployed.address}`);
+
   const contract = new ethers.Contract(contractAddress, MyContract.abi, signer);
   let value = await contract.getData();
   console.log("GetData", value.toString());
@@ -19,7 +33,7 @@ const main = async () => {
   console.log("SetData", randomNumber);
   const result = await contract.setData(randomNumber, {
     gasPrice: ethers.utils.parseUnits("1300", "gwei"),
-    gasLimit: 1000000,
+    gasLimit: 4000000,
   });
   const response = await result.wait();
   console.log("Transaction hash", response.transactionHash);

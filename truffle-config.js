@@ -46,7 +46,7 @@ module.exports = {
     // options below to some value.
     //
     development: {
-      network_id: 298, // Any network (default: none)
+      network_id: 296, // Any network (default: none)
       provider: () =>
         new HDWalletProvider(privKey, process.env.JSON_RPC_RELAY_URL),
       gas: 4000000,

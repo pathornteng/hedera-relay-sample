@@ -28,7 +28,7 @@ JSON_RPC_RELAY_URL < JSON RPC relay url
 Hedera JSON RPC relay requires an ECDSA account with an alias. This type of account must be created through Hedera SDK at the moment. To create an account, run the following command
 
 ```bash
-node create-accoount.js
+node create-account.js
 ```
 
 ## Contract Deployment

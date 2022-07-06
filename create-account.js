@@ -37,8 +37,8 @@ async function main() {
   console.log("account alias", aliasAccountId.toString());
 
   const sendHbar = await new TransferTransaction()
-    .addHbarTransfer(myAccountId, Hbar.from(-1000)) //Sending account
-    .addHbarTransfer(aliasAccountId, Hbar.from(1000)) //Receiving account
+    .addHbarTransfer(myAccountId, Hbar.from(-2000)) //Sending account
+    .addHbarTransfer(aliasAccountId, Hbar.from(2000)) //Receiving account
     .execute(client);
   const transactionReceipt = await sendHbar.getReceipt(client);
   console.log(

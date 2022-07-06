@@ -3,6 +3,7 @@ pragma solidity >=0.4.22 <0.9.0;
 
 contract MyContract {
     uint256 data;
+    event SetData(uint256 _value);
 
     constructor() {
         data = 10;
@@ -14,6 +15,7 @@ contract MyContract {
 
     function setData(uint256 _data) external {
         data = _data;
+        emit SetData(_data);
     }
 
     function setDataPrivate(uint256 _data) private {

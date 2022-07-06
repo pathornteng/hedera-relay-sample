@@ -1,4 +1,4 @@
-const { ethers } = require("ethers");
+const { utils, ethers } = require("ethers");
 const MyContract = require("./build/contracts/MyContract.json");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -13,28 +13,47 @@ const main = async () => {
   const balance = await provider.getBalance(signer.address);
   console.log("Account balance", ethers.utils.formatEther(balance), "Hbar");
 
+  const code = await provider.getCode(contractAddress);
+  console.log("Code", code);
+
+  // const storage = await provider.getStorageAt(signer.address);
+  // console.log("Storage", storage);
+
+  const txCount = await provider.getTransactionCount(signer.address);
+  console.log("TxCount", txCount);
+
+  const blockNumber = await provider.getBlockNumber();
+  console.log("getBlockNumber", blockNumber);
+
+  const blockInfo = await provider.getBlock(blockNumber);
+  console.log("blockInfo", blockInfo);
+
+  const gasPrice = await provider.getGasPrice();
+  console.log("Estimated gas price", utils.formatUnits(gasPrice, "gwei"));
+
+  const feeData = await provider.getFeeData();
+  console.log("feeData", feeData);
+
   const factory = new ethers.ContractFactory(
     MyContract.abi,
     MyContract.bytecode,
     signer
   );
-  const options = {
-    gasLimit: 4000000,
-    gasPrice: ethers.utils.parseUnits("1300", "gwei"),
-  };
+  const options = {};
   const contractFactory = await factory.deploy(options);
   const deployed = await contractFactory.deployed();
   console.log(`Deployment successful! Contract Address: ${deployed.address}`);
 
   const contract = new ethers.Contract(contractAddress, MyContract.abi, signer);
+  contract.on("SetData", (data) => {
+    console.log("SetData Event", data);
+  });
+
   let value = await contract.getData();
   console.log("GetData", value.toString());
   let randomNumber = Math.round(Math.random() * 100);
   console.log("SetData", randomNumber);
-  const result = await contract.setData(randomNumber, {
-    gasPrice: ethers.utils.parseUnits("1300", "gwei"),
-    gasLimit: 4000000,
-  });
+  const result = await contract.setData(randomNumber);
   const response = await result.wait();
   console.log("Transaction hash", response.transactionHash);
   console.log(

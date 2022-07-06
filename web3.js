@@ -32,7 +32,6 @@ const main = async () => {
     .send({
       from: account.address,
       gas: 4000000,
-      gasPrice: web3.utils.toWei("1300", "gwei"),
     })
     .on("receipt", (receipt) => {
       console.log("Transaction hash", receipt.transactionHash);

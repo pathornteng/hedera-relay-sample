@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -t 100000"
   },
   "author": "",
   "license": "ISC",
@@ -20,5 +20,10 @@
     "truffle-hdwallet-provider-privkey": "^0.3.0",
     "truffle-privatekey-provider": "^1.5.0",
     "web3": "^1.7.3"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^10.0.0"
   }
 }

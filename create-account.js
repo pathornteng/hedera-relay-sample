@@ -3,6 +3,7 @@ const {
   PrivateKey,
   Hbar,
   TransferTransaction,
+  AccountId,
 } = require("@hashgraph/sdk");
 const dotenv = require("dotenv");
 const axios = require("axios");
@@ -23,7 +24,9 @@ async function main() {
 
   // Create our connection to the Hedera network
   // The Hedera JS SDK makes this really easy!
-  const client = Client.forTestnet();
+  //Create your local client
+  const node = { "127.0.0.1:50211": new AccountId(3) };
+  const client = Client.forNetwork(node).setMirrorNetwork("127.0.0.1:5600");
 
   client.setOperator(myAccountId, myPrivateKey);
 

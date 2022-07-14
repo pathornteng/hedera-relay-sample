@@ -31,9 +31,10 @@ const main = async () => {
     .setData(randomNumber)
     .send({
       from: account.address,
-      gas: 4000000,
+      gas: 100000,
     })
     .on("receipt", (receipt) => {
+      console.log(receipt);
       console.log("Transaction hash", receipt.transactionHash);
       console.log(
         "Block number",

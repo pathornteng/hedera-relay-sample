@@ -34,15 +34,16 @@ const main = async () => {
   const feeData = await provider.getFeeData();
   console.log("feeData", feeData);
 
-  const factory = new ethers.ContractFactory(
-    MyContract.abi,
-    MyContract.bytecode,
-    signer
-  );
-  const options = {};
-  const contractFactory = await factory.deploy(options);
-  const deployed = await contractFactory.deployed();
-  console.log(`Deployment successful! Contract Address: ${deployed.address}`);
+  // const factory = new ethers.ContractFactory(
+  //   MyContract.abi,
+  //   MyContract.bytecode,
+  //   signer
+  // );
+  // const options = {};
+  // const contractFactory = await factory.deploy(options);
+  // const deployed = await contractFactory.deployed();
+  // console.log(`Deployment successful! Contract Address: ${deployed.address}`);
+  // console.log(deployed);
 
   const contract = new ethers.Contract(contractAddress, MyContract.abi, signer);
   contract.on("SetData", (data) => {
@@ -55,6 +56,7 @@ const main = async () => {
   console.log("SetData", randomNumber);
   const result = await contract.setData(randomNumber);
   const response = await result.wait();
+  console.log("Gas Used", response.gasUsed.toString());
   console.log("Transaction hash", response.transactionHash);
   console.log(
     "Block number",

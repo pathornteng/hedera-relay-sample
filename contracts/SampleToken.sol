@@ -6,7 +6,7 @@ contract SampleToken is ERC20 {
     string data = "test";
 
     constructor() ERC20("Gold", "GLD") {
-        _mint(msg.sender, 1000000);
+        _mint(msg.sender, 100000000000000000000); //mint 100 GLD
     }
 
     function transfer2(

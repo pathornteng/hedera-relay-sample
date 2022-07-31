@@ -51,6 +51,9 @@ module.exports = {
         new HDWalletProvider(privKey, process.env.JSON_RPC_RELAY_URL),
       gas: 6000000, // 6m
       gasPrice: 4000000000000, // 4000 gwei
+      confirmations: 3,
+      timeoutBlocks: 200,
+      skipDryRun: true,
     },
 
     // An additional network, but with some advanced options…

@@ -25,8 +25,7 @@ async function main() {
   // Create our connection to the Hedera network
   // The Hedera JS SDK makes this really easy!
   //Create your local client
-  const node = { "127.0.0.1:50211": new AccountId(3) };
-  const client = Client.forNetwork(node).setMirrorNetwork("127.0.0.1:5600");
+  const client = Client.forTestnet();
 
   client.setOperator(myAccountId, myPrivateKey);
 
